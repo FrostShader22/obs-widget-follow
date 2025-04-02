@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow Reminder</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: transparent;
+        }
+        #widget {
+            position: fixed;
+            top: 50%;
+            right: -500px;
+            transform: translateY(-50%);
+            background: linear-gradient(to right, #007BFF, #00CFFF);
+            color: white;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            padding: 15px 30px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+        }
+        
+        .show {
+            transform: translateY(-50%) translateX(-520px);
+            opacity: 1;
+        }
+        
+        .hide {
+            transform: translateY(-50%) translateX(0px);
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="widget">💙 Le stream te plaît ? Pense à follow et active la cloche ! 🔔</div>
+
+    <script>
+        function showWidget() {
+            let widget = document.getElementById("widget");
+            widget.classList.add("show");
+            widget.classList.remove("hide");
+
+            setTimeout(() => {
+                widget.classList.add("hide");
+                widget.classList.remove("show");
+            }, 8000); // Reste visible 8 secondes
+        }
+
+        setInterval(showWidget, 30); // Toutes les 30 minutes (1800000 ms)
+    </script>
+</body>
+</html>
